@@ -1,0 +1,114 @@
+# Reglas del Proyecto — Página Personal
+
+## Comunicación
+- Responde siempre en español
+- Explica los cambios importantes antes de aplicarlos
+- Si hay varias formas de resolver algo, menciona brevemente las opciones antes de elegir
+
+## Stack Tecnológico
+- Framework: Astro (usar siempre sintaxis de Astro, no React ni Vue salvo necesidad justificada)
+- Estilos: Tailwind CSS (clases utilitarias, sin CSS custom salvo casos excepcionales)
+- Iconos: astro-icon + Simple Icons (prefijo `si:` para marcas, `mdi:` para UI); seguir documentación oficial de astro-icon
+- Lenguaje: TypeScript estricto en todo momento (`strict: true`)
+
+## Dependencias — Política de Zero Bloat
+- NUNCA instalar una dependencia si la funcionalidad se puede lograr con el stack actual o con APIs nativas del navegador/Node
+- Antes de proponer instalar cualquier paquete, justificar explícitamente por qué no existe alternativa nativa
+- Revisar siempre el tamaño del paquete (bundle size) antes de instalarlo
+- Prohibido instalar: lodash, moment, axios, jquery, o cualquier utilidad que duplique funcionalidad nativa
+- Usar `fetch` nativo en lugar de axios; usar `Date` nativo en lugar de moment/dayjs
+- Si se necesita una librería de animación, evaluar primero CSS transitions/animations antes de instalar nada
+
+## Estructura de Archivos
+- Componentes en `src/components/`
+- Layouts en `src/layouts/`
+- Páginas en `src/pages/`
+- Tipos e interfaces en `src/types/`
+- Constantes y datos estáticos en `src/data/`
+- Funciones reutilizables y helpers en `src/utils/`
+- No crear carpetas nuevas sin justificación
+- Nombrado de archivos: componentes en `PascalCase.astro` (ej. `HeroSection.astro`), utilidades y datos en `camelCase.ts` (ej. `siteConfig.ts`), páginas en `kebab-case.astro` (ej. `about-me.astro`)
+
+## Componentes Astro
+- Un componente por archivo, con responsabilidad única (principio SRP)
+- Props siempre tipadas con `interface Props`
+- Preferir componentes `.astro` sobre frameworks JS a menos que se necesite interactividad real
+- Usar `<slot />` para contenido dinámico en layouts
+- No duplicar lógica: si algo se repite más de dos veces, extraerlo a un componente o función
+
+## Estilos y Diseño Responsivo
+- Estilo visual: minimalista (espacios generosos, tipografía limpia, paleta reducida)
+- El diseño debe ser 100% responsivo en TODOS los breakpoints: mobile-first (`sm:`, `md:`, `lg:`, `xl:`)
+- Probar siempre en: 320px, 375px, 768px, 1024px, 1440px
+- No usar valores arbitrarios de Tailwind (`w-[327px]`) salvo que sea estrictamente necesario y documentado
+- Dark mode: usar `class` strategy de Tailwind si se implementa en el futuro
+- Nunca usar `!important` ni sobreescribir estilos de Tailwind con CSS inline
+
+## TypeScript — Buenas Prácticas
+- Activar `strict: true` en `tsconfig.json`
+- No usar `any`; si es inevitable, añadir comentario `// reason:` explicando por qué
+- Tipar todas las props, funciones y sus retornos explícitamente
+- Preferir `type` para tipos simples e `interface` para objetos y contratos
+- Usar `readonly` en objetos que no deben mutar
+- Evitar type assertions (`as SomeType`) salvo cuando sea la única opción
+- No usar `!` (non-null assertion) sin un comentario que lo justifique
+
+## Buenas Prácticas de Programación
+- Funciones pequeñas y descriptivas (máximo ~30 líneas por función)
+- Nombrar variables y funciones de forma clara y en inglés (`getUserName`, no `getUN`)
+- Evitar comentarios obvios; comentar solo el "por qué", no el "qué"
+- Evitar efectos secundarios inesperados en funciones
+- Preferir inmutabilidad: usar `const`, evitar mutaciones directas de objetos/arrays
+
+## Seguridad
+- Nunca exponer claves API, tokens o secretos en el código frontend
+- Usar variables de entorno (`.env`) para cualquier valor sensible; nunca hardcodear
+- Siempre mantener un `.env.example` actualizado y commiteado con todas las variables necesarias (sin valores reales)
+- Validar y sanitizar cualquier input del usuario antes de procesarlo
+- Usar `rel="noopener noreferrer"` en todos los enlaces externos (`target="_blank"`)
+- No usar `innerHTML` ni `dangerouslySetInnerHTML`; preferir métodos seguros del DOM
+- Las dependencias deben revisarse con `npm audit` antes de instalar
+- Mantener dependencias actualizadas; no dejar paquetes con vulnerabilidades conocidas
+- Headers de seguridad configurados en `astro.config.mjs` (CSP, X-Frame-Options, etc.)
+
+## Performance — Objetivo Lighthouse 100
+- Meta: Lighthouse score 100 en Performance, Accesibilidad, Best Practices y SEO
+- Astro genera HTML estático por defecto: mantener ese comportamiento al máximo
+- Cero JavaScript en el cliente salvo que sea imprescindible para la interactividad
+- Usar `client:visible` en lugar de `client:load` para componentes interactivos no críticos
+- Optimizar todas las imágenes con el componente `<Image />` de `astro:assets` (WebP, tamaño correcto)
+- Nunca cargar fuentes desde Google Fonts u CDN externo; usar `font-display: swap` y self-hosting
+- Evitar render-blocking resources (scripts síncronos, CSS no crítico inline)
+- Minificar y comprimir assets en producción (Astro lo hace por defecto, no interferir)
+- No añadir animaciones pesadas ni librerías de animación JS; preferir CSS puro
+
+## Accesibilidad (a11y)
+- Todas las imágenes deben tener atributo `alt` descriptivo y significativo
+- Los iconos decorativos deben tener `aria-hidden="true"`
+- Usar etiquetas semánticas HTML5 (`<main>`, `<section>`, `<nav>`, `<footer>`, `<article>`)
+- Contraste mínimo WCAG AA en todos los textos (ratio 4.5:1 para texto normal)
+- Todos los elementos interactivos deben ser accesibles por teclado (`Tab`, `Enter`, `Space`)
+- Usar atributos ARIA solo cuando el HTML semántico no sea suficiente
+
+## SEO
+- Cada página debe tener `<title>` y `<meta name="description">` únicos
+- Usar Open Graph tags (`og:title`, `og:description`, `og:image`) en todas las páginas
+- URLs limpias y descriptivas, sin parámetros innecesarios
+- Generar `sitemap.xml` con `@astrojs/sitemap`
+- Incluir `robots.txt` en `public/` permitiendo indexación por defecto
+
+## Modularidad y Escalabilidad
+- Diseñar cada componente pensando en que puede crecer o reutilizarse en el futuro
+- Ningún componente debe conocer los detalles internos de otro (bajo acoplamiento)
+- Los datos y la lógica deben estar separados de la presentación (no mezclar fetch/lógica dentro de componentes visuales)
+- Usar `src/data/` para centralizar contenido estático (textos, links, configuración); nunca hardcodear estos valores dentro de los componentes
+- Si una sección nueva se añade a la página, debe poder agregarse sin modificar componentes existentes
+- Los layouts deben ser genéricos y reutilizables, no atados a una página específica
+- Configuración global del sitio (nombre, redes sociales, SEO base) centralizada en un único archivo `src/data/config.ts`
+- Evitar "magic numbers" y "magic strings": usar constantes nombradas exportadas desde `src/data/` o `src/types/`
+- Pensar en barrel exports (`index.ts`) en carpetas con múltiples componentes para simplificar los imports
+
+## Git
+- Mensajes de commit en inglés, formato Conventional Commits (`feat:`, `fix:`, `style:`, `perf:`, `security:`)
+- Un commit por cambio lógico, no mezclar refactors con features
+- No commitear archivos `.env`, `node_modules/`, ni builds

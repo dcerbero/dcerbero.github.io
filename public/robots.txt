@@ -1,0 +1,16 @@
+# robots.txt para Mi Página Personal
+# Generado automáticamente por Astro
+
+User-agent: *
+Allow: /
+
+# Sitemap (se generará automáticamente cuando se instale @astrojs/sitemap)
+Sitemap: https://ejemplo.com/sitemap-index.xml
+
+# Deshabilitar crawling de rutas de desarrollo
+Disallow: /admin/
+Disallow: /api/
+
+# Nota: Para staging/development, considera bloquear todo el sitio:
+# User-agent: *
+# Disallow: /
