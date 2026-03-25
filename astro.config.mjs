@@ -8,6 +8,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://dcerbero.github.io',  // dominio base
-  base: '/web-page',    
+  site: 'https://dcerbero.github.io',  // dominio baseß    
 });
