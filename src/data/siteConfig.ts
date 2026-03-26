@@ -19,18 +19,18 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'Mi Página Personal',
-  description: 'Un sitio web personal minimalista construido con Astro y Tailwind CSS',
-  url: 'https://ejemplo.com',
-  author: 'Tu Nombre',
+  name: 'Diego Cruz - Ingeniero de Software',
+  description: 'Sitio personal de Diego Cruz, Ingeniero de Software y Arquitecto de Soluciones',
+  url: 'https://dcerbero.github.io',
+  author: 'Diego Cruz',
   socialLinks: {
-    github: 'https://github.com/tuusuario',
-    twitter: 'https://twitter.com/tuusuario',
-    linkedin: 'https://linkedin.com/in/tuusuario',
+    github: 'https://github.com/dcerbero',
+    // twitter: 'https://twitter.com/dcerbero', // Opcional
+    // linkedin: 'https://linkedin.com/in/dcerbero', // Opcional
   },
   seo: {
-    defaultTitle: 'Mi Página Personal | Desarrollo Web',
-    defaultDescription: 'Portafolio personal y blog sobre desarrollo web, Astro y TypeScript',
+    defaultTitle: 'Diego Cruz - Ingeniero de Software',
+    defaultDescription: 'Sitio personal de Diego Cruz, Ingeniero de Software especializado en arquitectura de soluciones y sistemas de alta disponibilidad',
     ogImage: '/og-image.png',
   },
 };
