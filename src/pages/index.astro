@@ -1,17 +1,10 @@
 ---
-// Página de inicio - Hola Mundo minimalista
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Content as IntroContent } from '../data/intro.md';
 ---
 
-<BaseLayout title="Hola Mundo">
-  <main class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
-    <div class="text-center">
-      <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-        ¡Hola, Mundo!
-      </h1>
-      <p class="text-xl text-gray-600">
-        Proyecto Astro básico creado siguiendo las reglas de .roorules
-      </p>
-    </div>
-  </main>
+<BaseLayout title="Diego Cruz - Ingeniero de Software">
+  <div class="text-base font-normal leading-relaxed text-zinc-300">
+    <IntroContent />
+  </div>
 </BaseLayout>

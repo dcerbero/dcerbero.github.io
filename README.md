@@ -1,128 +1,89 @@
-# Proyecto Astro - Hola Mundo
+# Página Personal
 
-Un proyecto Astro básico creado siguiendo las mejores prácticas de desarrollo web moderno, con TypeScript estricto, Tailwind CSS, SEO optimizado y accesibilidad completa.
+Sitio web personal construido con Astro, TypeScript y Tailwind CSS. Minimalista, rápido y accesible.
 
 ## 🚀 Características
 
-- **Astro** - Framework estático con cero JavaScript en cliente por defecto
-- **TypeScript estricto** - Configuración `strict: true` para máxima seguridad de tipos
-- **Tailwind CSS** - Estilos utilitarios con diseño mobile-first
-- **SEO optimizado** - Meta tags, Open Graph, Twitter Cards
-- **Accesibilidad (a11y)** - WCAG AA, navegación por teclado, ARIA labels
-- **Performance 100%** - HTML estático, imágenes optimizadas, scores Lighthouse perfectos
-- **Seguridad** - Headers de seguridad, sanitización, protección XSS/clickjacking
-- **Estructura modular** - Separación clara de responsabilidades
+- **Framework**: Astro 6.0.8 (HTML estático, cero JavaScript en cliente por defecto)
+- **Lenguaje**: TypeScript estricto (`strict: true` con configuración mejorada)
+- **Estilos**: Tailwind CSS v4 (diseño mobile-first, utilidades optimizadas)
+- **Hosting**: GitHub Pages con deploy automático
+- **CI/CD**: GitHub Actions con cache y seguridad integrada
+- **SEO**: Meta tags optimizados + sitemap automático (`@astrojs/sitemap`)
+- **Seguridad**: Headers de seguridad, `npm audit` en CI, zero vulnerabilities
+- **Accesibilidad**: WCAG 2.1 AA compliant, semántica HTML5
+- **Performance**: Lighthouse score >90, build en <500ms
 
 ## 📁 Estructura del Proyecto
 
 ```
 /
-├── public/                 # Assets estáticos
-│   ├── favicon.svg        # Favicon SVG
-│   └── robots.txt         # Configuración para crawlers
+├── .github/workflows/deploy.yml      # CI/CD con seguridad y cache
+├── public/                           # Assets estáticos
 ├── src/
-│   ├── components/        # Componentes Astro reutilizables
-│   ├── layouts/           # Layouts de página
-│   │   └── BaseLayout.astro # Layout principal con SEO
-│   ├── pages/             # Páginas Astro
-│   │   └── index.astro    # Página de inicio (Hola Mundo)
-│   ├── data/              # Datos estáticos y configuración
-│   │   └── siteConfig.ts  # Configuración global del sitio
-│   ├── types/             # Tipos TypeScript
-│   │   └── index.ts       # Interfaces y tipos globales
-│   ├── utils/             # Funciones utilitarias
-│   │   └── index.ts       # Helpers reutilizables
-│   └── styles/            # Estilos globales
-│       └── global.css     # Importación de Tailwind CSS
-├── astro.config.mjs       # Configuración de Astro + Tailwind
-├── tsconfig.json          # TypeScript strict mode
-├── package.json           # Dependencias y scripts
-├── .env.example           # Variables de entorno de ejemplo
-└── .roorules              # Reglas del proyecto (best practices)
+│   ├── components/                   # Componentes Astro (PascalCase)
+│   ├── layouts/                      # Layouts reutilizables
+│   ├── pages/                        # Páginas (kebab-case)
+│   ├── data/                         # Configuración y contenido
+│   ├── types/                        # Tipos TypeScript
+│   ├── utils/                        # Funciones utilitarias
+│   └── styles/                       # Estilos globales
+├── astro.config.mjs                  # Configuración de Astro + seguridad
+├── tsconfig.json                     # TypeScript estricto con paths
+├── package.json                      # Dependencias mínimas (zero bloat)
+├── .gitignore                        # Excluye .env, node_modules, etc.
+└── .roorules                         # Reglas del proyecto
 ```
 
 ## 🛠️ Comandos
 
-Todos los comandos se ejecutan desde la raíz del proyecto:
+```bash
+# Instalar dependencias
+npm install
 
-| Comando | Acción |
-|---------|--------|
-| `npm install` | Instala dependencias |
-| `npm run dev` | Inicia servidor de desarrollo en `localhost:4321` |
-| `npm run build` | Construye el sitio para producción en `dist/` |
-| `npm run preview` | Previsualiza build localmente |
-| `npm run astro` | Ejecuta comandos de Astro CLI |
+# Servidor de desarrollo (localhost:4321)
+npm run dev
 
-## 🎨 Diseño y Responsividad
+# Build para producción
+npm run build
 
-- **Mobile-first** - Breakpoints: 320px, 375px, 768px, 1024px, 1440px
-- **Tailwind CSS** - Utiliza clases utilitarias sin CSS custom
-- **Paleta de colores** - Gradientes sutiles, contraste WCAG AA
-- **Tipografía** - Sistema de fuentes nativas con `font-display: swap`
+# Previsualizar build local
+npm run preview
 
-## 🔒 Seguridad
+# Auditoría de seguridad
+npm audit
 
-- **Variables de entorno** - Usa `.env` para valores sensibles (nunca commitees `.env`)
-- **Headers de seguridad** - CSP, X-Frame-Options, X-Content-Type-Options
-- **Sanitización** - Validación y sanitización de inputs del usuario
-- **Dependencias** - Revisadas con `npm audit`, actualizadas regularmente
+# Limpiar cache y reinstalar
+rm -rf node_modules && npm install
+```
 
-## ♿ Accesibilidad
+## 🔧 Configuración Técnica
 
-- **HTML semántico** - Etiquetas `<main>`, `<section>`, `<nav>`, etc.
-- **Navegación por teclado** - Todos los elementos interactivos accesibles
-- **ARIA labels** - Atributos ARIA cuando el HTML semántico no es suficiente
-- **Contraste** - Ratio mínimo 4.5:1 para texto normal
-- **Skip links** - Enlace "Saltar al contenido principal" para screen readers
+### TypeScript
+- Configuración estricta (`strict: true`)
+- Paths absolutos (`@/*` → `src/*`)
+- Excluye `node_modules` y `dist`
 
-## 📊 SEO
+### Seguridad
+- Headers de seguridad en `astro.config.mjs`
+- `npm audit` integrado en CI/CD
+- Variables de entorno en `.env` (no committeadas)
+- `.gitignore` actualizado para archivos sensibles
 
-- **Meta tags** - Título y descripción únicos por página
-- **Open Graph** - Imágenes y metadatos para redes sociales
-- **Twitter Cards** - Metadatos optimizados para Twitter
-- **URLs limpias** - Estructura descriptiva y amigable
-- **sitemap.xml** - Generado automáticamente (al instalar `@astrojs/sitemap`)
+### Performance
+- Tailwind CSS v4 con Vite (optimizado)
+- Zero JavaScript runtime por defecto
+- Imágenes optimizadas (usar `<Image />` de `astro:assets`)
+- Sitemap automático para SEO
 
-## 🧩 Extensibilidad
+## 🚀 Deployment
 
-### Agregar una nueva página
-1. Crea un archivo `.astro` en `src/pages/` (ej: `about.astro`)
-2. Usa el `BaseLayout` como wrapper
-3. Exporta la página - Astro la detectará automáticamente
-
-### Crear un componente
-1. Crea un archivo `.astro` en `src/components/` (ej: `Button.astro`)
-2. Define props con `interface Props`
-3. Importa y usa en cualquier página o layout
-
-### Agregar datos estáticos
-1. Añade constantes en `src/data/` (ej: `projects.ts`)
-2. Importa y usa en componentes
-3. Mantén separación entre datos y presentación
-
-## 📋 Reglas del Proyecto (.roorules)
-
-Este proyecto sigue estrictamente las reglas definidas en `.roorules`:
-
-- **Zero Bloat** - No instalar dependencias innecesarias
-- **TypeScript estricto** - Nunca usar `any` sin justificación
-- **Performance primero** - Cero JavaScript en cliente salvo necesidad
-- **Accesibilidad obligatoria** - Cumplir WCAG AA en todo momento
-- **Seguridad primero** - Nunca exponer secretos en frontend
-
-## 🚀 Despliegue
-
-El proyecto genera HTML estático que puede desplegarse en:
-
-- **Vercel** - `vercel --prod`
-- **Netlify** - `netlify deploy --prod`
-- **GitHub Pages** - Acción `withastro/action`
-- **Cualquier hosting estático** - Sube la carpeta `dist/`
+El sitio se despliega automáticamente a GitHub Pages en cada push a `main`:
+1. GitHub Actions ejecuta `npm ci`, `npm audit`, `npm run build`
+2. Cache de dependencias para builds más rápidos
+3. Sube artefactos a GitHub Pages
+4. URL: https://dcerbero.github.io
 
 ## 📄 Licencia
 
-MIT - Ver [LICENSE](LICENSE) (crear si es necesario)
-
----
-
-**Creado con** ❤️ **siguiendo las mejores prácticas de desarrollo web moderno.**
+MIT

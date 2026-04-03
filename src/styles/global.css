@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+/* Estilos tipográficos base */
+h1 {
+  @apply text-3xl font-bold tracking-tighter;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  @apply text-xl font-semibold tracking-tighter;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  @apply text-base font-normal leading-relaxed;
+  margin-bottom: 1.5rem;
+  color: #a1a1aa;
+}
+
+a {
+  @apply text-blue-400 underline underline-offset-2;
+  transition: color 0.2s;
+}
+
+a:hover {
+  @apply text-blue-300;
+}
+
+small, .text-sm {
+  @apply text-sm font-normal;
+}
+
+body {
+  background-color: #1a1a1a;
+}
