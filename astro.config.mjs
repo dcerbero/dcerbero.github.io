@@ -8,9 +8,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://dcerbero.github.io',  // dominio base
+  site: 'https://www.dcerbero.com',  // dominio base corregido
   security: {
     checkOrigin: true
+    // Nota: Los headers de seguridad se configuran en el servidor
+    // Ver archivos public/_headers (Netlify/Vercel) y public/.htaccess (Apache)
   },
   integrations: [sitemap()]
 });

@@ -30,6 +30,6 @@ export const siteConfig: SiteConfig = {
   seo: {
     defaultTitle: 'Diego C - Ingeniero de Software',
     defaultDescription: 'Sitio personal de Diego C, Ingeniero de Software especializado en arquitectura de soluciones y sistemas de alta disponibilidad',
-    ogImage: '/og-image.png',
+    ogImage: '/og-image.svg',
   },
 };

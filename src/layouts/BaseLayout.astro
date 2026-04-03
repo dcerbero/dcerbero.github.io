@@ -1,5 +1,16 @@
 ---
 import '../styles/global.css';
+import { siteConfig } from '../data/siteConfig';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title || siteConfig.seo.defaultTitle;
+const pageDescription = description || siteConfig.seo.defaultDescription;
+const canonicalUrl = siteConfig.url + Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -7,13 +18,33 @@ import '../styles/global.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{Astro.props.title || 'Hola Mundo'}</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={siteConfig.url + siteConfig.seo.ogImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={pageDescription} />
+    <meta property="twitter:image" content={siteConfig.url + siteConfig.seo.ogImage} />
+    
     <!-- Favicon moderno SVG para navegadores que lo soportan -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Favicon ICO para compatibilidad con navegadores antiguos -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <!-- Shortcut icon para máxima compatibilidad -->
     <link rel="shortcut icon" href="/favicon.ico" />
+    
     <style>
       body {
         font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
