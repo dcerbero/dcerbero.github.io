@@ -1,4 +1,4 @@
-# Diego Cruz - Página Personal
+# Página Personal
 
 Sitio web personal construido con Astro, TypeScript y Tailwind CSS. Minimalista, rápido y accesible.
 

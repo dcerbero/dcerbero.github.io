@@ -1,4 +1,4 @@
-# Diego Cruz
+# Diego C
  
 Soy ingeniero de software y trabajo como Arquitecto de Soluciones Senior en la industria aseguradora.
  
