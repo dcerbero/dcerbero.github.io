@@ -21,7 +21,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   name: 'Diego C - Ingeniero de Software',
   description: 'Sitio personal de Diego C, Ingeniero de Software y Arquitecto de Soluciones',
-  url: 'https://dcerbero.github.io',
+  url: 'https://www.dcerbero.com',
   author: 'Diego C',
   socialLinks: {
     github: 'https://github.com/dcerbero',
