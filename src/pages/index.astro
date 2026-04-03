@@ -1,10 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Content as IntroContent } from '../data/intro.md';
+import SocialIcons from '../components/SocialIcons.astro';
 ---
 
 <BaseLayout title="Diego C - Ingeniero de Software">
   <div class="text-base font-normal leading-relaxed text-zinc-300">
     <IntroContent />
+  </div>
+  <div class="mt-8 pt-6 border-t border-zinc-800">
+    <SocialIcons className="justify-center" />
   </div>
 </BaseLayout>

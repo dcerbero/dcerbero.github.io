@@ -19,18 +19,17 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'Diego Cruz - Ingeniero de Software',
-  description: 'Sitio personal de Diego Cruz, Ingeniero de Software y Arquitecto de Soluciones',
-  url: 'https://dcerbero.github.io',
-  author: 'Diego Cruz',
+  name: 'Diego C - Ingeniero de Software',
+  description: 'Sitio personal de Diego C, Ingeniero de Software y Arquitecto de Soluciones',
+  url: 'https://www.dcerbero.com',
+  author: 'Diego C',
   socialLinks: {
     github: 'https://github.com/dcerbero',
-    // twitter: 'https://twitter.com/dcerbero', // Opcional
-    // linkedin: 'https://linkedin.com/in/dcerbero', // Opcional
+    linkedin: 'https://www.linkedin.com/in/d176768',
   },
   seo: {
-    defaultTitle: 'Diego Cruz - Ingeniero de Software',
-    defaultDescription: 'Sitio personal de Diego Cruz, Ingeniero de Software especializado en arquitectura de soluciones y sistemas de alta disponibilidad',
-    ogImage: '/og-image.png',
+    defaultTitle: 'Diego C - Ingeniero de Software',
+    defaultDescription: 'Sitio personal de Diego C, Ingeniero de Software especializado en arquitectura de soluciones y sistemas de alta disponibilidad',
+    ogImage: '/og-image.svg',
   },
 };

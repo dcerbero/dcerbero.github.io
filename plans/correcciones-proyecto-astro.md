@@ -132,17 +132,17 @@ export default defineConfig({
 **Actualizar con valores reales**:
 ```typescript
 export const siteConfig: SiteConfig = {
-  name: 'Diego Cruz - Ingeniero de Software',
-  description: 'Sitio personal de Diego Cruz, Ingeniero de Software y Arquitecto de Soluciones',
+  name: 'Diego C - Ingeniero de Software',
+  description: 'Sitio personal de Diego C, Ingeniero de Software y Arquitecto de Soluciones',
   url: 'https://dcerbero.github.io',
-  author: 'Diego Cruz',
+  author: 'Diego C',
   socialLinks: {
     github: 'https://github.com/dcerbero',
     // twitter y linkedin si existen
   },
   seo: {
-    defaultTitle: 'Diego Cruz - Ingeniero de Software',
-    defaultDescription: 'Sitio personal de Diego Cruz, Ingeniero de Software',
+    defaultTitle: 'Diego C - Ingeniero de Software',
+    defaultDescription: 'Sitio personal de Diego C, Ingeniero de Software',
     ogImage: '/og-image.png'
   }
 };
