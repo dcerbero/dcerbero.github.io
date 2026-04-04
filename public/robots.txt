@@ -1,16 +1,37 @@
-# robots.txt para Mi Página Personal
-# Generado automáticamente por Astro
+# robots.txt para dcerbero.com
+# Sitio personal de Diego C - Ingeniero de Software
 
+# Política de crawling para todos los user-agents
 User-agent: *
 Allow: /
 
-# Sitemap (se generará automáticamente cuando se instale @astrojs/sitemap)
-Sitemap: https://ejemplo.com/sitemap-index.xml
+# Crawlers específicos - reglas adicionales
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
 
-# Deshabilitar crawling de rutas de desarrollo
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Bloquear rutas que no existen o no son relevantes
 Disallow: /admin/
-Disallow: /api/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
 
-# Nota: Para staging/development, considera bloquear todo el sitio:
-# User-agent: *
-# Disallow: /
+# Bloquear archivos de sistema y configuración
+Disallow: /.*.php$
+Disallow: /.*.env$
+Disallow: /.*.json$
+Disallow: /.*.md$
+
+# Sitemap
+Sitemap: https://www.dcerbero.com/sitemap-index.xml
+
+# Host preferido (opcional, para evitar contenido duplicado)
+Host: www.dcerbero.com
